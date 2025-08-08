@@ -1,6 +1,8 @@
 import "../styles/global.css";
 import {useState, useEffect} from "react";
 import axios from "axios";
+import Sidebar from "../components/sideBar";
+
 
 export default function Dashboard() {
    const [customer, setCustomers] = useState([]);
@@ -29,11 +31,27 @@ export default function Dashboard() {
    }
 
     return(
-        <div className="container">
-     <h1>CRM Dashboard</h1>
+        <div className="dashboard-container">
+     
      {userToken ? (
         <>
-        <p>Welcome to your CRM system</p>
+        <Sidebar />
+        <div className="main-content">
+         <p>Welcome to your CRM system</p>
+         <div className="cards">
+         <div className="card">
+            <h4>Total Customers</h4>
+            <p>120</p>
+         </div>
+         <div className="card">
+            <h4>Active Leads</h4>
+            <p>45</p>
+         </div>
+         <div className="card">
+            <h4>Total Revenue</h4>
+            <p>$12,000</p>
+         </div>
+         </div>
         <form onSubmit={handleSubmit} className="customer-form">
          <input placeholder="Name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
         <input placeholder="Email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
@@ -54,6 +72,7 @@ export default function Dashboard() {
        <button onClick={() => { localStorage.removeItem("token"); window.location.href = "/login"; }}>
             Logout
           </button>
+        </div>
         </>
      ):(
         <p>Please log in to access the dashboard</p>

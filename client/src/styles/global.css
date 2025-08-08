@@ -1,9 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: #f4f4f4;
 }
 
+.dashboard-container{
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar{
+    width: 250px;
+    background-color: #1a1a2e;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar ul{
+    list-style: none;
+}
+
+.sidebar ul li:hover {
+  background-color: #16213e;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.navbar {
+  background-color: white;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sidebar ul li{
+    padding: 12px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 .container{
     max-width: 500px;
     margin: 50px auto;
