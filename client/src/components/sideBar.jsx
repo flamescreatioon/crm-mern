@@ -1,17 +1,20 @@
 import React from "react";
 import "../styles/global.css";
+import {NavLink} from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Dashboard</h2>
+     <aside>
+       <h2>Dashboard</h2>
       <ul>
-        <li>Home</li>
-        <li>Customers</li>
-        <li>Leads</li>
-        <li>Reports</li>
-        <li>Settings</li>
+        <li><NavLink to="/" className={({isActive}) => (isActive ? "active" : "")}>Home</NavLink></li>
+        <li><NavLink to="/customers" className={({isActive}) => (isActive ? "active" : "")}>Customers</NavLink></li>
+        <li><NavLink to="/leads" className={({isActive}) => (isActive ? "active" : "")}>Leads</NavLink></li>
+        <li><NavLink to="/reports" className={({isActive}) => (isActive ? "active" : "")}>Reports</NavLink></li>
+        <li><NavLink to="/settings" className={({isActive}) => (isActive ? "active" : "")}>Settings</NavLink></li>
       </ul>
+     </aside>
     </div>
   );
 };

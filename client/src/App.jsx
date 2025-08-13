@@ -9,7 +9,7 @@ function App(){
     <Router>
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         </Routes>
