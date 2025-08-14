@@ -4,12 +4,12 @@ import "../styles/global.css";
 const StatsCard = ({title, value, icon, color}) => {
     return(
         <div className="stats-card" style={{borderLeft: `5px solid ${color}`}}>
-            <div className="stats-icon" style={{backgroundColor: color}}>
+            <div className="stats-icon" >
                 {icon}
             </div>
             <div className="stats-info">
                 <h4>{title}</h4>
-                <p>{value}</p>
+                <p style={{color: color}}>{value}</p>
             </div>
         </div>
     );

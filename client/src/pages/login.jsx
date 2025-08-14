@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "../styles/global.css";
+import PrimaryButton from "../components/reusables/primaryButton";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -23,27 +24,31 @@ export default function Login() {
   };
 
 return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-full max-w-md bg-white p-8 rounded shadow">
-            <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="container">
+        <div className="auth-container">
+            <h2 className="auth-heading">Welcome to your dashboard</h2>
+            <p className="text text-auth">Please enter your credentials to access your dashboard.</p>
+            <form onSubmit={handleSubmit} className="">
                 <input
                     type="email"
                     name="email"
                     placeholder="Email"
-                    className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="auth-input"
                     onChange={handleChange}
                 />
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
-                    className="border w-full p-3 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="auth-input"
                     onChange={handleChange}
                 />
-                <button className="bg-green-500 hover:bg-green-600 text-white w-full py-3 rounded font-semibold transition">
+                <PrimaryButton
+                type="submit"
+                onClick={handleSubmit}
+                >
                     Login here
-                </button>
+                </PrimaryButton>
             </form>
         </div>
     </div>

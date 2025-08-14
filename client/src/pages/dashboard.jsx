@@ -5,17 +5,10 @@ import Sidebar from "../components/sideBar";
 import NavBar from "../components/navbar";
 import StatsCard from "../components/stats";
 import { FaUsers, FaUserPlus, FaChartLine, FaFileAlt } from "react-icons/fa";
+import CustomerForm from "../components/customerForm";
 
 export default function Dashboard() {
   const [customer, setCustomers] = useState([]);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    notes: "",
-    address: "",
-  });
   const userToken = localStorage.getItem("token");
   const [stats, setStats] = useState({
     totalCustomers: 0,
@@ -33,27 +26,7 @@ export default function Dashboard() {
       .catch((err) => console.error(err));
   }, [userToken]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post(
-        "http://localhost:5000/api/customers",
-        form,
-        { headers: { Authorization: `Bearer ${userToken}` } }
-      );
-      setCustomers([...customer, res.data]);
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        notes: "",
-        address: "",
-      });
-    } catch (error) {
-      console.error("Error adding customer", error);
-    }
-  };
+ 
 
   return (
     <div className="dashboard-container">
@@ -69,71 +42,37 @@ export default function Dashboard() {
               }}
               userName="User"
             />
-            <p>Welcome to your CRM system</p>
+            <p className="heading">CRM System</p>
             <div className="cards">
               <StatsCard
                 title="Total Customers"
                 value={stats.totalCustomers}
                 icon={<FaUsers />}
-                color="#1a1a2e"
+                color="#000038ff"
               />
               <StatsCard
                 title="New Leads"
                 value={stats.newLeads}
                 icon={<FaUserPlus />}
-                color="#1a1a2e"
+                color="#013d13ff"
               />
               <StatsCard
                 title="Monthly Sales"
                 value={stats.monthlySales}
                 icon={<FaChartLine />}
-                color="#1a1a2e"
+                color="#b44800ff"
               />
               <StatsCard
                 title="Reports Generated"
                 value={stats.reportsGenerated}
                 icon={<FaFileAlt />}
-                color="#1a1a2e"
+                color="#580000ff"
               />
-              <div className="card">
-                <h4>Active Leads</h4>
-                <p>45</p>
-              </div>
-              <div className="card">
-                <h4>Total Revenue</h4>
-                <p>$12,000</p>
-              </div>
+              
             </div>
-            <form onSubmit={handleSubmit} className="customer-form">
-              <input
-                placeholder="Name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-              />
-              <input
-                placeholder="Email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-              />
-              <input
-                placeholder="Phone"
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-              />
-              <input
-                placeholder="Company"
-                value={form.company}
-                onChange={(e) => setForm({ ...form, company: e.target.value })}
-              />
-              <input
-                placeholder="Notes"
-                value={form.notes}
-                onChange={(e) => setForm({ ...form, notes: e.target.value })}
-              />
-              <button type="submit">Add customer</button>
-            </form>
-
-            <h2>Customers</h2>
+            <h2 className="heading">Customers</h2>
+            <CustomerForm />
+           
             <ul>
               {customer.map((c) => (
                 <li key={c._id}>
