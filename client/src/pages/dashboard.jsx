@@ -6,6 +6,8 @@ import NavBar from "../components/navbar";
 import StatsCard from "../components/stats";
 import { FaUsers, FaUserPlus, FaChartLine, FaFileAlt } from "react-icons/fa";
 import CustomerForm from "../components/customerForm";
+import RecentActivity from "../components/widgets/RecentActivity";
+import SalesChart from "../components/widgets/SalesChart";
 
 export default function Dashboard() {
   const [customer, setCustomers] = useState([]);
@@ -42,7 +44,8 @@ export default function Dashboard() {
               }}
               userName="User"
             />
-            <p className="heading">CRM System</p>
+            <div className="content">
+              <p className="heading">CRM System</p>
             <div className="cards">
               <StatsCard
                 title="Total Customers"
@@ -70,7 +73,10 @@ export default function Dashboard() {
               />
               
             </div>
+
+              <SalesChart/>
             <h2 className="heading">Customers</h2>
+           
             <CustomerForm />
            
             <ul>
@@ -88,7 +94,13 @@ export default function Dashboard() {
             >
               Logout
             </button>
+            </div>
+            
           </div>
+
+           <RecentActivity />
+
+          
         </>
       ) : (
         <p>Please log in to access the dashboard</p>

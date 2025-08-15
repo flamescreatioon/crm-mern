@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const customerRoutes = require("./routes/customer");
+const activityRoutes = require("./routes/activity");
+const salesRoutes = require("./routes/sales");
 dotenv.config();
 
 
@@ -17,6 +19,8 @@ app.use(express.urlencoded({ extended: true })); // Add URL-encoded parsing
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes); 
 app.use("/api/customers", customerRoutes);
+app.use("/api/recent-activity", activityRoutes);
+app.use("/api/sales", salesRoutes);
 
 const PORT = process.env.PORT || 5000;
 const MONGO_URL = process.env.MONGO_URI;
