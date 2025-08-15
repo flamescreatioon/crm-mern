@@ -8,6 +8,7 @@ import { FaUsers, FaUserPlus, FaChartLine, FaFileAlt } from "react-icons/fa";
 import CustomerForm from "../components/customerForm";
 import RecentActivity from "../components/widgets/RecentActivity";
 import SalesChart from "../components/widgets/SalesChart";
+import LeadsTable from "../components/LeadsTable";
 
 export default function Dashboard() {
   const [customer, setCustomers] = useState([]);
@@ -76,6 +77,7 @@ export default function Dashboard() {
 
               <SalesChart/>
             <h2 className="heading">Customers</h2>
+             <LeadsTable />
            
             <CustomerForm />
            
@@ -99,7 +101,6 @@ export default function Dashboard() {
           </div>
 
            <RecentActivity />
-
           
         </>
       ) : (
